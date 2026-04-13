@@ -8,7 +8,8 @@
     "seed": "tsx src/api/config/seed.ts",
     "swagger:generate": "tsx docs/generate-swagger.ts",
     "swagger:validate": "swagger-cli validate docs/swagger-output.json",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc && tsc-alias"
   },
   "keywords": [],
   "author": "",
