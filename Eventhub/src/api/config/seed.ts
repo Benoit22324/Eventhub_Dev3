@@ -1,18 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 import "dotenv/config";
-import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { generateSalt, getEnvVariable, hashPassword } from "../utility";
 import type { CreateUserInputs } from "../dto/user.dto";
 import type { CreateCategoryInput } from "../dto/category.dto";
 import type { CreateEventInputs } from "../dto/event.dto";
 
-const pool = new Pool({
-    connectionString: getEnvVariable("DATABASE_URL")
-})
-
 export const prisma = new PrismaClient({
-    adapter: new PrismaPg(pool)
+    adapter: new PrismaPg({
+        connectionString: getEnvVariable("DATABASE_URL")
+    })
 });
 
 const users: CreateUserInputs[] = [

@@ -5,7 +5,8 @@ import { EventByOffsetGatewayInterface } from "./interfaces/EventByOffsetGateway
 export class EventByOffsetApi implements EventByOffsetGatewayInterface {
     async byOffset(page: number, limit: number): Promise<{ events: Event[], total: number }> {
         try {
-            const response = await axios.get(`http://localhost:8000/api/event/offset?page=${page}&limit=${limit}`);
+            // const response = await axios.get(`http://localhost:8000/api/event/offset?page=${page}&limit=${limit}`);
+            const response = await axios.get(`/api/event/offset?page=${page}&limit=${limit}`);
 
             if (!response.data.success) throw new Error(response.data.error?.message || "Erreur inconnue");
 

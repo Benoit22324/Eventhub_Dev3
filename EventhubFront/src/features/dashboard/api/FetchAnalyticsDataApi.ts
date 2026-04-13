@@ -7,7 +7,10 @@ export class FetchAnalyticsDataApi implements DashboardQueryInterface {
         pages: DashboardModel.PageViewData[],
         users: DashboardModel.PageViewData[]
     }> {
-        const result = await axios.get("http://localhost:8000/api/analytics", {
+        // const result = await axios.get("http://localhost:8000/api/analytics", {
+        //     withCredentials: true
+        // });
+        const result = await axios.get("/api/analytics", {
             withCredentials: true
         });
 

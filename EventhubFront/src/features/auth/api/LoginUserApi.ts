@@ -5,7 +5,10 @@ import { LoginUserGatewayInterface } from "./interfaces/LoginUserGatewayInterfac
 export class LoginUserApi implements LoginUserGatewayInterface {
     async login(payload: LoginForm): Promise<User> {
         try {
-            const response = await axios.post("http://localhost:8000/api/auth/login", payload, {
+            // const response = await axios.post("http://localhost:8000/api/auth/login", payload, {
+            //     withCredentials: true
+            // });
+            const response = await axios.post("/api/auth/login", payload, {
                 withCredentials: true
             });
 

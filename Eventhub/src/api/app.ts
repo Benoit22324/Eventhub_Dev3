@@ -3,7 +3,7 @@ import { ApiRouter } from "./routes";
 import { jsonApiResponseMiddleware, errorHandlerMiddleware } from "./middlewares";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerOptions from "docs/swaggerConfig";
+import swaggerOptions from "../../docs/swaggerConfig";
 import rateLimit from "express-rate-limit";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -17,7 +17,11 @@ initializeMongoose();
 initialiseRedisClient();
 
 app.use(cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: [
+        "http://localhost:5173", "http://127.0.0.1:5173", "http://0.0.0.0:5173",
+        "http://localhost:80", "http://127.0.0.1:80", "http://0.0.0.0:80",
+        "http://localhost", "http://127.0.0.1", "http://0.0.0.0",
+    ],
     credentials: true
 }));
 app.use(cookieParser());

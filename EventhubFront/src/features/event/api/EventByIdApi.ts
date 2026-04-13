@@ -5,7 +5,8 @@ import { EventByIdGatewayInterface } from "./interfaces/EventByIdGatewayInterfac
 export class EventByIdApi implements EventByIdGatewayInterface {
     async byId(id: string): Promise<Event> {
         try {
-            const response = await axios.get(`http://localhost:8000/api/event/${id}`);
+            // const response = await axios.get(`http://localhost:8000/api/event/${id}`);
+            const response = await axios.get(`/api/event/${id}`);
 
             if (!response.data.success) throw new Error(response.data.error?.message || "Erreur inconnue");
 

@@ -22,7 +22,7 @@ export const RegisterForm: React.FC = () => {
                     rules={{ required: true }}
                     name="username"
                     defaultValue={""}
-                    render={({field}) => <input
+                    render={({field}: any) => <input
                         id="username"
                         type="text"
                         className="w-2/3 px-2 py-1 bg-white font-semibold rounded-sm border-1 border-gray-400"
@@ -43,7 +43,7 @@ export const RegisterForm: React.FC = () => {
                     rules={{ required: true }}
                     name="email"
                     defaultValue={""}
-                    render={({field}) => <input
+                    render={({field}: any) => <input
                         id="email"
                         type="email"
                         className="w-2/3 px-2 py-1 bg-white font-semibold rounded-sm border-1 border-gray-400"
@@ -64,7 +64,7 @@ export const RegisterForm: React.FC = () => {
                     rules={{ required: true, minLength: 6 }}
                     name="password"
                     defaultValue={""}
-                    render={({field}) => <input
+                    render={({field}: any) => <input
                         id="password"
                         type="password"
                         className="w-2/3 px-2 py-1 bg-white font-semibold rounded-sm border-1 border-gray-400"

@@ -5,7 +5,10 @@ import { FetchMeInterface } from "./interfaces/FetchMeInterface";
 export class FetchMeApi implements FetchMeInterface {
     async fetchMe(): Promise<AuthModel.User> {
         try {
-            const response = await axios.get("http://localhost:8000/api/auth/me", {
+            // const response = await axios.get("http://localhost:8000/api/auth/me", {
+            //     withCredentials: true
+            // });
+            const response = await axios.get("/api/auth/me", {
                 withCredentials: true
             });
 
