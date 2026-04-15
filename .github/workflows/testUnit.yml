@@ -9,6 +9,7 @@ jobs:
     env:
       NODE_ENV: test
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      DATABASE_URL: "postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}"
 
     steps:
       - name: Checkout code
@@ -30,6 +31,10 @@ jobs:
       - name: Install back dependencies
         working-directory: ./Eventhub
         run: npm ci
+
+      - name: Generate Prisma Model
+        working-directory: ./Eventhub
+        run: npx prisma generate
 
       - name: Test back
         working-directory: ./Eventhub
