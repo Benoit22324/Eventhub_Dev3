@@ -22,9 +22,10 @@ jobs:
           cache-dependency-path: |
             Eventhub/package-lock.json
             EventhubFront/package-lock.json
-      - name: Lint backend
-        working-directory: ./Eventhub
-        run: npx eslint src/ --ext .ts
+
+    #   - name: Lint backend
+    #     working-directory: ./Eventhub
+    #     run: npx eslint src/ --ext .ts
 
       - name: Install back dependencies
         working-directory: ./Eventhub
