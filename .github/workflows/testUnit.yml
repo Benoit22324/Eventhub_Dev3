@@ -1,0 +1,35 @@
+name: Unit Tests
+
+on:
+  workflow_call:
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+          cache-dependency-path: |
+            Eventhub/package-lock.json
+            EventhubFront/package-lock.json
+      - name: Lint backend
+        working-directory: ./Eventhub
+        run: npx eslint src/ --ext .ts
+
+      - name: Install back dependencies
+        working-directory: ./Eventhub
+        run: npm ci
+
+      - name: Test back
+        working-directory: ./Eventhub
+        run: npm run test

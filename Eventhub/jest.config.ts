@@ -6,5 +6,6 @@ export default {
     coverageDirectory: '../coverage',
     coverageProvider: 'v8',
     moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
-    rootDir: 'src/tests'
+    rootDir: 'src/tests',
+    clearMocks: true
 };

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`GetUserByIdUseCase Scenario: Valid id should return an object of User 1`] = `
+{
+  "email": "test@gmail.com",
+  "id": "abc",
+  "otpEnable": false,
+  "otpSecret": "",
+  "password": "johndoe",
+  "role": "user",
+  "salt": "salty",
+  "username": "test",
+}
+`;

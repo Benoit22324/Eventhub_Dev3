@@ -16,14 +16,14 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "",
             description: "Un concert",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2026-07-02"),
             capacity: 100,
             price: 6.59,
             category: "Concert"
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Title is required");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Le titre est requis");
         })
     })
 
@@ -31,14 +31,14 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "Concert de ouf",
             description: "",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2027-02-02"),
             capacity: 100,
             price: 6.59,
             category: "Concert"
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Description is required");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("La description est requis");
         })
     })
 
@@ -53,7 +53,7 @@ describe("GetEventsUseCase", () => {
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("StartDate need to be at least 1 day further");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("La date de début doit être au moins 1 jour de plus");
         })
     })
 
@@ -61,14 +61,14 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "Concert de ouf",
             description: "Un concert",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2027-02-02"),
             capacity: 0,
             price: 6.59,
             category: "Concert"
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Capacity need to have at least 1 person");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("La capacité doit avoir au moins 1 personne");
         })
     })
 
@@ -76,14 +76,14 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "Concert de ouf",
             description: "Un concert",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2027-02-02"),
             capacity: 100,
             price: 0,
             category: "Concert"
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Price need to have at least 1$");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Le prix doit être au moins à 1$");
         })
     })
 
@@ -91,14 +91,14 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "Concert de ouf",
             description: "Un concert",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2027-02-02"),
             capacity: 100,
             price: 6.59,
             category: ""
         };
 
         it("should throw an Error", async () => {
-            await expect(usecase.execute("abc123", payload)).rejects.toThrow("Category is required");
+            await expect(usecase.execute("abc123", payload)).rejects.toThrow("La catégorie est requis");
         })
     })
 
@@ -106,7 +106,7 @@ describe("GetEventsUseCase", () => {
         const payload: CreateEventInputs = {
             title: "Concert de ouf",
             description: "Un concert",
-            startDate: new Date("2026-02-02"),
+            startDate: new Date("2027-02-02"),
             capacity: 100,
             price: 6.59,
             category: "Concert"
