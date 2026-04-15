@@ -13,21 +13,21 @@ jobs:
     uses: ./.github/workflows/testUnit.yml
     secrets: inherit
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Build backend Docker image
-        run: docker build -t eventhub-backend ./Eventhub/Dockerfile
+#       - name: Build backend Docker image
+#         run: docker build -t eventhub-backend ./Eventhub
 
-      - name: Build frontend Docker image
-        run: docker build -t eventhub-frontend ./EventhubFront/Dockerfile
+#       - name: Build frontend Docker image
+#         run: docker build -t eventhub-frontend ./EventhubFront
 
   deploy:
     if: github.event_name == 'push'
-    needs: [build, unit-tests]
+    needs: [unit-tests]
     runs-on: ubuntu-latest
 
     steps:

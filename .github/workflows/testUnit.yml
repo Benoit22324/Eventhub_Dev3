@@ -31,6 +31,10 @@ jobs:
         working-directory: ./Eventhub
         run: npm ci
 
+      - name: Generate Prisma Model
+        working-directory: ./Eventhub
+        run: npx prisma generate
+
       - name: Test back
         working-directory: ./Eventhub
         run: npm run test
