@@ -45,13 +45,14 @@ services:
   migrate:
     image: node:20-alpine
     working_dir: /app
-    build: ./Eventhub                      # Monter le code backend dans le conteneur
+    volumes:                      # Monter le code backend dans le conteneur
+      - ./Eventhub:/back
     env_file:
       - ./Eventhub/.env
     depends_on:
       postgres:
         condition: service_healthy
-    command: sh -c "npx prisma migrate deploy"
+    command: sh -c "npm install && npx prisma migrate deploy"
     networks:
       - app-network
 
