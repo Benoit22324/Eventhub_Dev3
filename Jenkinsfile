@@ -73,7 +73,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            when { branch 'main' }
+            // when { branch 'main' }
             steps {
                 sh "docker compose down || true"
                 sh "docker compose up -d --build"
@@ -82,7 +82,7 @@ pipeline {
     }
 
     post {
-        always { sh 'docker system prune -f || true' }
+        // always { sh 'docker system prune -f || true' }
         success { echo 'Tous les tests passent !' }
         failure { echo 'Des tests ont échoué.' }
     }
