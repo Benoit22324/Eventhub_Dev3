@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         IMAGE_TAG = "${env.BUILD_NUMBER}"
+        SONAR_TOKEN = credentials('sonarqube-token')
     }
 
     stages {
@@ -68,6 +69,16 @@ pipeline {
             steps {
                 sh "docker build -t eventhub-backend:${IMAGE_TAG} ./Eventhub"
                 sh "docker build -t eventhub-frontend:${IMAGE_TAG} ./EventhubFront"
+            }
+        }
+
+        stage('Deploy') {
+            when { branch 'main' }
+            steps {
+                sh '''
+                    docker compose down || true
+                    docker compose up -d --build
+                '''
             }
         }
     }
