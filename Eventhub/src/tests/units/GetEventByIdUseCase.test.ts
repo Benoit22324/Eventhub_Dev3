@@ -12,7 +12,7 @@ describe("GetEventByIdUseCase", () => {
     })
 
     it("should throw an error", async () => {
-        await expect(usecase.execute("1")).rejects.toThrow("Event not found");
+        await expect(usecase.execute("1")).rejects.toThrow("Événement introuvable");
     })
     it("should return a value", async () => {
         await expect(usecase.execute("1234")).resolves.toBeDefined();
