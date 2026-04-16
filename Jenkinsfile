@@ -42,7 +42,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                dir('back') {
+                dir('Eventhub') {
                     withSonarQubeEnv('SonarQube') {
                         sh "${tool('SonarScanner')}/bin/sonar-scanner"
                     }
