@@ -3,7 +3,7 @@ export default {
     preset: 'ts-jest',
     testEnvironment: 'node',
     testRegex: '\\.test\\.ts$',
-    coverageDirectory: '../coverage',
+    coverageDirectory: '../../coverage',
     coverageProvider: 'v8',
     moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
     rootDir: 'src/tests',
