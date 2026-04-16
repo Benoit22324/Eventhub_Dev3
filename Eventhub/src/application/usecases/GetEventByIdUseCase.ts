@@ -5,7 +5,7 @@ class GetEventByIdUseCase {
 
     async execute(id: string) {
         try {
-            const event = this.eventRepository.get(id);
+            const event = await this.eventRepository.get(id);
 
             return event
         } catch(err) {
