@@ -63,6 +63,13 @@ pipeline {
                 dir('Eventhub') { sh 'npm run build' }
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh "docker build -t eventhub-backend:${IMAGE_TAG} ./Eventhub"
+                sh "docker build -t eventhub-frontend:${IMAGE_TAG} ./EventhubFront"
+            }
+        }
     }
 
     post {
