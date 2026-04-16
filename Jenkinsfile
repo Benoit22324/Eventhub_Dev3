@@ -75,14 +75,14 @@ pipeline {
         stage('Deploy') {
             when { branch 'main' }
             steps {
-                sh docker compose down || true
-                sh docker compose up -d --build
+                sh "docker compose down || true"
+                sh "docker compose up -d --build"
             }
         }
     }
 
     post {
-        always { echo "Build #${env.BUILD_NUMBER} terminé" }
+        always { sh 'docker system prune -f || true' }
         success { echo 'Tous les tests passent !' }
         failure { echo 'Des tests ont échoué.' }
     }
