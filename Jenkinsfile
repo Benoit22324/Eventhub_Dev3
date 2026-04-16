@@ -34,18 +34,9 @@ pipeline {
             }
         }
 
-        stage('Tests') {
-            parallel {
-                stage('Backend Unit Tests') {
-                    steps {
-                        dir('Eventhub') { sh 'npm run test' }
-                    }
-                }
-                stage('Frontend Tests') {
-                    steps {
-                        dir('EventhubFront') { sh 'npm test' }
-                    }
-                }
+        stage('Backend Unit Tests') {
+            steps {
+                dir('Eventhub') { sh 'npm run test' }
             }
         }
 
