@@ -73,7 +73,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            // when { branch 'main' }
+            when { branch 'main' }
             steps {
                 sh "docker compose down || true"
                 sh "docker compose up -d --build"
