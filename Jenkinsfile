@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'Node-20'
+    }
+
+    environment {
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Install Dependencies') {
+            parallel {
+                stage('Backend Deps') {
+                    steps {
+                        dir('Eventhub') { sh 'npm ci' }
+                    }
+                }
+                stage('Frontend Deps') {
+                    steps {
+                        dir('EventhubFront') { sh 'npm ci' }
+                    }
+                }
+            }
+        }
+
+        stage('Fix Prisma dependencies') {
+            steps {
+                dir('Eventhub') {
+                    sh 'echo DATABASE_URL=postgresql://user:password@postgres:5432/eventhub > .env'
+                    sh 'npx prisma generate'
+                }
+            }
+        }
+
+        stage('Tests') {
+            parallel {
+                stage('Backend Unit Tests') {
+                    steps {
+                        dir('Eventhub') { sh 'npm run test' }
+                    }
+                }
+                stage('Frontend Tests') {
+                    steps {
+                        dir('EventhubFront') { sh 'npm test' }
+                    }
+                }
+            }
+        }
+
+        stage('Build Backend') {
+            steps {
+                dir('Eventhub') { sh 'npm run build' }
+            }
+        }
+    }
+
+    post {
+        always { echo "Build #${env.BUILD_NUMBER} terminé" }
+        success { echo 'Tous les tests passent !' }
+        failure { echo 'Des tests ont échoué.' }
+    }
+}
