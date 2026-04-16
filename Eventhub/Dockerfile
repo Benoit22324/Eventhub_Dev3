@@ -31,12 +31,14 @@ COPY package*.json ./
 RUN npm install --only=production
 
 # 8. Copier le client Prisma genere depuis le stage builder
-COPY --from=builder /app/node_modules/.prisma /app/node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma /app/node_modules/@prisma
+# COPY --from=builder /app/node_modules/.prisma /app/node_modules/.prisma
+# COPY --from=builder /app/node_modules/@prisma /app/node_modules/@prisma
 
 # 9. Copier le code compile et le schema
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
+
+RUN npx prisma generate
 
 # 10. Exposer le port
 EXPOSE 8000
