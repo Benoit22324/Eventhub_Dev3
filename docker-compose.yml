@@ -45,8 +45,7 @@ services:
   migrate:
     image: node:20-alpine
     working_dir: /app
-    volumes:                       # Monter le code backend dans le conteneur
-      - ./Eventhub:/back
+    build: ./Eventhub                      # Monter le code backend dans le conteneur
     env_file:
       - ./Eventhub/.env
     depends_on:
