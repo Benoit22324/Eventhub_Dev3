@@ -27,11 +27,14 @@ describe("GetUserByIdUseCase", () => {
     })
 
     describe("Scenario: Valid id", () => {
+        // Arrange
         const id = "abc";
 
         it("should return an object of User", async () => {
+            // Act
             const result = await usecase.execute(id);
 
+            // Assert
             expect(result).toEqual({
                 id: "abc",
                 username: "test",
