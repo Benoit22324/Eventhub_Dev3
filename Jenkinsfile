@@ -76,7 +76,6 @@ pipeline {
             // when { branch 'main' }
             steps {
                 sh "docker compose down || true"
-                sh "ls -ld /var/jenkins_home/workspace/EventHub-Pipeline/nginx/nginx.conf"
                 sh "docker compose up -d --build"
             }
         }
