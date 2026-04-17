@@ -5,6 +5,7 @@ services:
     ports:
       - 80:80
     volumes:
+      # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./nginx/nginx.conf:/var/jenkins_home/workspace/EventHub-Pipeline/nginx/nginx.conf
     depends_on:
       frontend:
