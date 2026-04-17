@@ -1,7 +1,7 @@
 services:
   nginx:
     image: nginx:alpine
-    container_name: nginx
+    # container_name: nginx
     ports:
       - 80:80
     volumes:
@@ -17,7 +17,7 @@ services:
 
   frontend:
     build: ./EventhubFront
-    container_name: frontend
+    # container_name: frontend
     expose:
       - 80
     networks:
@@ -28,7 +28,7 @@ services:
 
   backend:
     build: ./Eventhub
-    container_name: backend
+    # container_name: backend
     env_file:                       # Charger les variables depuis un fichier
       - ./Eventhub/.env
     expose:
