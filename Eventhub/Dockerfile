@@ -39,6 +39,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
 RUN npx prisma generate
+RUN npx prisma migrate deploy
 
 # 10. Exposer le port
 EXPOSE 8000

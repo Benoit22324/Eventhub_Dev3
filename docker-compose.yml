@@ -42,19 +42,19 @@ services:
     networks:
       - app-network
 
-  migrate:
-    image: node:20-alpine
-    working_dir: /app
-    volumes:                      # Monter le code backend dans le conteneur
-      - ./Eventhub:/app
-    env_file:
-      - ./Eventhub/.env
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: sh -c "npx prisma migrate deploy"
-    networks:
-      - app-network
+  # migrate:
+  #   image: node:20-alpine
+  #   working_dir: /app
+  #   volumes:                      # Monter le code backend dans le conteneur
+  #     - ./Eventhub:/app
+  #   env_file:
+  #     - ./Eventhub/.env
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   command: sh -c "npx prisma migrate deploy"
+  #   networks:
+  #     - app-network
 
   postgres:
     image: postgres:15
