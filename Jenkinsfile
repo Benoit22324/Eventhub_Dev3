@@ -76,7 +76,7 @@ pipeline {
             // when { branch 'main' }
             steps {
                 sh "docker compose down || true"
-                sh "docker compose -p jenkins up -d --build"
+                sh "docker compose up -d --build"
             }
         }
     }
