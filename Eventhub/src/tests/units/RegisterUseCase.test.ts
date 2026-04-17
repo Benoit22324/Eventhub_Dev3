@@ -59,6 +59,7 @@ describe("RegisterUseCase", () => {
     })
 
     describe("Scenario: No error", () => {
+        // Given -> Les variables qu'on va utiliser pour test
         const payload = {
             username: "test",
             email: "test123@gmail.com",
@@ -66,8 +67,10 @@ describe("RegisterUseCase", () => {
         };
 
         test("should return a boolean true", async() => {
+            // When -> Les résultats
             const result = await usecase.execute(payload.username, payload.email, payload.password);
 
+            // Then -> Les tests
             expect(result).toBeTruthy();
         })
     })

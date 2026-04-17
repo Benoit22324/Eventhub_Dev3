@@ -27,14 +27,14 @@ describe("GetUserByIdUseCase", () => {
     })
 
     describe("Scenario: Valid id", () => {
-        // Arrange
+        // Arrange -> Les variables qu'on va utiliser pour test
         const id = "abc";
 
         it("should return an object of User", async () => {
-            // Act
+            // Act -> Les résultats
             const result = await usecase.execute(id);
 
-            // Assert
+            // Assert -> Les tests
             expect(result).toEqual({
                 id: "abc",
                 username: "test",
