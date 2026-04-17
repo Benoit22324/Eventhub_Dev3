@@ -76,13 +76,14 @@ pipeline {
             // when { branch 'main' }
             steps {
                 sh "docker compose down || true"
+                sh "ls -ld /var/jenkins_home/workspace/EventHub-Pipeline/nginx/nginx.conf"
                 sh "docker compose up -d --build"
             }
         }
     }
 
     post {
-        // always { sh 'docker system prune -f || true' }
+        always { sh 'docker system prune -f || true' }
         success { echo 'Tous les tests passent !' }
         failure { echo 'Des tests ont échoué.' }
     }
