@@ -69,7 +69,7 @@ jobs:
             EOF
 
             docker compose down
-            docker compose up -p workflow -d --build
+            docker compose -p workflow up -d --build
 
       - name: Notify on failure
         if: failure()
