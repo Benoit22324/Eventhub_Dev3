@@ -38,11 +38,12 @@ RUN npm install --only=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
-RUN npx prisma generate && npx prisma migrate deploy
+# RUN npx prisma generate && npx prisma migrate deploy
 # RUN npx prisma migrate deploy
 
 # 10. Exposer le port
 EXPOSE 8000
 
 # 11. Commande de demarrage
+CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy"]
 CMD ["node", "./dist/src/api/app.js"]
