@@ -79,7 +79,7 @@ services:
 
   mongo:
     image: mongo:latest
-    container_name: eventhub_mongo
+    # container_name: eventhub_mongo
     restart: always
     ports:
       - '27017:27017'
