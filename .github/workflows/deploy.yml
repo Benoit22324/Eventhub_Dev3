@@ -63,6 +63,9 @@ jobs:
             POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
             POSTGRES_DB=${{ secrets.DB_NAME }}
             DATABASE_URL=postgresql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@postgres:5432/${{ secrets.DB_NAME }}
+            APP_NAME=${{ secrets.APP_NAME }}
+            MONGO_URI=${{ secrets.MONGO_URI }}
+            REDIS_URI=${{ secrets.REDIS_URI }}
             EOF
 
             docker compose down
